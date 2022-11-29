@@ -1,34 +1,27 @@
 package com.example.spring_employee.Service;
 
 import com.example.spring_employee.Model.Employee;
+import com.example.spring_employee.repository.EmployeeRepository;
+import org.springframework.stereotype.Service;
 
-import java.util.ArrayList;
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.util.*;
 
+@Service
 public class EmployeeServiseImpl implements EmployeeServise {
-     private final List<Employee> employeeList=new ArrayList<>();
-
-
+    private final EmployeeRepository employeeRepository=new EmployeeRepository();
 
 
     @Override
-    public Employee employeeAdd(String firstName, String lastName, int numberDepartment, double salary) {
-        Employee employee = new Employee(firstName,lastName,numberDepartment,salary);
-        employeeList.add(employee);
+    public Employee add(String name, String surName, Integer numberDepartment, double salary) {
+        Employee employee = new Employee(name, surName, numberDepartment, salary);
+        employeeRepository.addEmployee(employee);
         return employee;
     }
 
     @Override
-    public Employee employeeFind(String firstName, String lastName, int numberDepartment, double salary) {
-
-
-        return employeeList.stream().filter(employee -> employee.getFirstName().equals(firstName)&&employee.getLastName().equals(lastName)&&);
+    public List<Employee> getAll() {
+        return  employeeRepository.getAll();
     }
 
-    @Override
-    public Employee employeeRemove(String firstName, String lastName, int numberDepartment, double salary) {
-        return null;
-    }
+
 }

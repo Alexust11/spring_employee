@@ -3,14 +3,14 @@ package com.example.spring_employee.Model;
 import java.util.Objects;
 
 public class Employee {
-    private String firstName;
-    private String lastName;
-    public int numberDepartment;
+    private String name;
+    private String surName;
+    public Integer numberDepartment;
     public double salary;
 
-    public Employee(String firstName, String lastName, int numberDepartment, double salary) {
-        this.firstName = firstName;
-        this.lastName = lastName;
+    public Employee(String name, String surName, Integer numberDepartment, double salary) {
+        this.name = name;
+        this.surName = surName;
         this.numberDepartment = numberDepartment;
         this.salary = salary;
     }
@@ -33,19 +33,19 @@ public class Employee {
     }
 
     public String getFirstName() {
-        return firstName;
+        return name;
     }
 
     public void setFirstName(String firstName) {
-        this.firstName = firstName;
+        this.name = firstName;
     }
 
     public String getLastName() {
-        return lastName;
+        return surName;
     }
 
     public void setLastName(String lastName) {
-        this.lastName = lastName;
+        this.surName = lastName;
     }
 
     @Override
@@ -53,20 +53,20 @@ public class Employee {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Employee employee = (Employee) o;
-        return firstName.equals(employee.firstName) && lastName.equals(employee.lastName);
+        return name.equals(employee.name) && surName.equals(employee.surName);
 
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(firstName, lastName);
+        return Objects.hash(name, surName);
     }
 
     @Override
     public String toString() {
         return "Employee{" +
-                "firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
+                "firstName='" + name + '\'' +
+                ", lastName='" + surName + '\'' +
                 ", numberDepartment=" + numberDepartment +
                 ", salary=" + salary +
                 '}';
