@@ -3,7 +3,6 @@ package com.example.spring_employee.Controller;
 import com.example.spring_employee.Model.Employee;
 import com.example.spring_employee.Service.DepartmentService;
 import com.example.spring_employee.Service.EmployeeServise;
-import com.example.spring_employee.repository.EmployeeRepository;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
@@ -32,10 +31,6 @@ public class EmployeeController {
 
     }
 
-    @GetMapping("/employees")
-    public List<Employee> getAll() {
-        return employeeServise.getAll();
-    }
 
 
 }
