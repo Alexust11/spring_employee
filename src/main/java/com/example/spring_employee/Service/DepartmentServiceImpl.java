@@ -12,11 +12,11 @@ import java.util.stream.Collectors;
 public class DepartmentServiceImpl implements DepartmentService {
 
     private final EmployeeServise employeeServise;
-    private final Map<Integer,List<Employee>> employeeMap;
+//    private final Map<Integer,List<Employee>> employeeMap;
 
-    public DepartmentServiceImpl(EmployeeServise employeeServise, Map<Integer, List<Employee>> employeeMap) {
+    public DepartmentServiceImpl(EmployeeServise employeeServise){                   //, Map<Integer, List<Employee>> employeeMap) {
         this.employeeServise = employeeServise;
-        this.employeeMap = employeeMap;
+//        this.employeeMap = employeeMap;
     }
 
     @Override
@@ -39,16 +39,7 @@ public class DepartmentServiceImpl implements DepartmentService {
         return employeeServise.getAll().stream().filter(x->x.getNumberDepartment()==numberDepartment).mapToDouble(Employee::getSalary).sum();
     }
 
-//    @Override
-//    public Map<Integer, List<Employee>> getAllSortDep() {
-//        List<Integer> numbersDep=new ArrayList<>();
-//        employeeServise.getAll().stream().filter(x->!numbersDep.add(x.numberDepartment)).collect(Collectors.toSet());
-//        for (int i = 0; i < numbersDep.size(); i++) {
-//            employeeMap.put(numbersDep[i].)
-//        }
-//
-//        return
-//    }
+
 
 
 }
