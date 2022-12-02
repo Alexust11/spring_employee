@@ -19,7 +19,7 @@ import static org.mockito.Mockito.when;
 
 @ExtendWith(MockitoExtension.class)
 class DepartmentServiceImplTest {
-
+    private static Employee MAX_SALARY=new Employee("Ivan", "Ivanov", 2, 30000);
     @Mock
     private EmployeeServise employeeServise;
     @InjectMocks
@@ -39,7 +39,7 @@ class DepartmentServiceImplTest {
 
     @Test
     void getMaxSalary() {
-        assertEquals(actualEmployeeList.stream().filter(x->x.getNumberDepartment()==numberDepActual).max(Comparator.comparingDouble(Employee::getSalary)), departmentService.getMaxSalary(numberDepExpected));
+        assertEquals(MAX_SALARY.getSalary(), departmentService.getMaxSalary(numberDepExpected));
     }
 
     @Test
