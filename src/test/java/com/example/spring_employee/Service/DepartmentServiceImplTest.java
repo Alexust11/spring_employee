@@ -13,7 +13,6 @@ import java.util.Comparator;
 import java.util.List;
 import java.util.stream.Collectors;
 
-import static com.example.spring_employee.Service.TestConst.*;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThatExceptionOfType;
 import static org.junit.jupiter.api.Assertions.*;
 import static org.mockito.Mockito.when;
@@ -40,13 +39,13 @@ class DepartmentServiceImplTest {
 
     @Test
     void getMaxSalary() {
-        assertEquals(Max_Salary,departmentService.getMaxSalary(numberDepExpected));
-
+        assertEquals(actualEmployeeList.stream().filter(x->x.getNumberDepartment()==numberDepActual).max(Comparator.comparingDouble(Employee::getSalary)), departmentService.getMaxSalary(numberDepExpected));
     }
 
     @Test
     void getMinSalary() {
-        assertEquals(Min_Salary,departmentService.getMinSalary(numberDepExpected));    }
+        assertEquals(actualEmployeeList.stream().filter(x->x.getNumberDepartment()==numberDepActual).min(Comparator.comparingDouble(Employee::getSalary)), departmentService.getMinSalary(numberDepExpected));
+    }
 
     @Test
     void getAll() {
@@ -55,6 +54,6 @@ class DepartmentServiceImplTest {
 
     @Test
     void getSumSalary() {
-       assertEquals(Sum_Salary,departmentService.getSumSalary(numberDepExpected));
+       assertEquals(actualEmployeeList.stream().filter(x->x.getNumberDepartment()==numberDepActual).mapToDouble(Employee::getSalary).sum(),departmentService.getSumSalary(numberDepExpected));
     }
 }
