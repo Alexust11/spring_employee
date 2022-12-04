@@ -62,9 +62,9 @@ class EmployeeServiseTest {
 
     @Test
     void DoubleSurName() {
-        Employee expected=employeeServiceOut.add(Employee_DoubleSurname.getFirstName(),Employee_DoubleSurname.getLastName(),
-                                                 Employee_DoubleSurname.getNumberDepartment(),Employee_DoubleSurname.getSalary());
-        assertEquals(expected, Employee_DoubleSurname);
+        Employee expected=employeeServiceOut.add(EMPLOYEE_DOUBLE_SURNAME.getFirstName(),EMPLOYEE_DOUBLE_SURNAME.getLastName(),
+                EMPLOYEE_DOUBLE_SURNAME.getNumberDepartment(),EMPLOYEE_DOUBLE_SURNAME.getSalary());
+        assertEquals(expected, EMPLOYEE_DOUBLE_SURNAME);
     }
 
     @Test
