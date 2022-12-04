@@ -12,6 +12,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.stream.Stream;
 
+import static com.example.spring_employee.Service.TestConst.*;
+import static org.assertj.core.api.Assertions.assertThat;
+import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertThrows;
 import static org.junit.jupiter.api.Assertions.*;
 
 class EmployeeServiseTest {
@@ -48,4 +52,39 @@ class EmployeeServiseTest {
         List<Employee> expected = employeeServiceOut.getAll();
         assertEquals(expected, actual);
     }
+
+    @Test
+    void checkCorrectAddIsEmpty() {
+        assertThat(employeeServiceOut.getAll()).isEmpty();
+    }
+
+    @Test
+    void DoubleSurName() {
+        Employee expected=employeeServiceOut.add(Employee_DoubleSurname.getFirstName(),Employee_DoubleSurname.getLastName(),
+                                                 Employee_DoubleSurname.getNumberDepartment(),Employee_DoubleSurname.getSalary());
+        assertEquals(expected, Employee_DoubleSurname);
+    }
+
+    @Test
+    void allCapitalLetters() {
+        Employee expected=employeeServiceOut.add(EMPLOYEE_ALL_CAPITAL_LETTERS.getFirstName(),EMPLOYEE_ALL_CAPITAL_LETTERS.getLastName(),
+                EMPLOYEE_ALL_CAPITAL_LETTERS.getNumberDepartment(),EMPLOYEE_ALL_CAPITAL_LETTERS.getSalary());
+        assertEquals(expected, EMPLOYEE_ALL_CAPITAL_LETTERS);
+    }
+    @Test
+    void  allLowCaseLetters() {
+        Employee expected=employeeServiceOut.add(EMPLOYEE_LOWCASE_LETTERS.getFirstName(),EMPLOYEE_LOWCASE_LETTERS.getLastName(),
+                EMPLOYEE_LOWCASE_LETTERS.getNumberDepartment(),EMPLOYEE_LOWCASE_LETTERS.getSalary());
+        assertEquals(expected, EMPLOYEE_LOWCASE_LETTERS);
+
+    }
+    @Test
+    public void shouldReturnEmployeeIncorrectParamException() {
+        assertThrows(RuntimeException.class,
+                () -> employeeServiceOut.add(EMPLOYEE_INCORRECT_SYMBOL.getFirstName(),
+                        EMPLOYEE_INCORRECT_SYMBOL.getLastName(),
+                        EMPLOYEE_INCORRECT_SYMBOL.getNumberDepartment(),
+                        EMPLOYEE_INCORRECT_SYMBOL.getSalary()));
+    }
+
 }

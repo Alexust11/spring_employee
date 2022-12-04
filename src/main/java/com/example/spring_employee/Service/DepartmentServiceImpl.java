@@ -21,6 +21,7 @@ public class DepartmentServiceImpl implements DepartmentService {
 
     @Override
     public Optional<Employee> getMaxSalary(Integer numberDepartment) {
+
         return employeeServise.getAll().stream().filter(x->x.getNumberDepartment()==numberDepartment).max(Comparator.comparingDouble(Employee::getSalary));
     }
 
